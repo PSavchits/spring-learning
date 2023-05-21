@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1623221638187-91bd42da2de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            text-align: center;
+        }
+        .content a {
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #000000; /* Рамка толщиной 1 пиксель и черного цвета */
+            border-radius: 5px; /* Закругленные углы рамки */
+            margin: 5px; /* Расстояние между ссылками */
+            background-color: white; /* Белый фон внутри рамки */
+        }
+    </style>
+
+    <style>
+        hr {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <div th:each="person : ${people}">
+        <a th:href="@{/people/{id}(id=${person.getId()})}"
+           th:text="${person.getName() + ', ' + person.getAge()}">user</a>
+    </div>
+
+    <br/>
+    <hr/>
+    <a href="/people/new">Create new person</a>
+</div>
+</body>
+</html>

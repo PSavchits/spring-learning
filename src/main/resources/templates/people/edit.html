@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update person</title>
+
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1623221638187-91bd42da2de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        label, input, div {
+            border: 1px solid black; /* Рамка толщиной 1 пиксель и черного цвета */
+            border-radius: 5px; /* Закругленные углы рамки */
+            padding: 5px; /* Отступ внутри рамки */
+            margin-bottom: 10px; /* Расстояние между элементами */
+            background-color: white;
+        }
+
+        div[style="color:red"] {
+            padding: 5px; /* Отступ внутри рамки */
+        }
+
+        input[type="submit"] {
+            background-color: white; /* Белый фон внутри рамки */
+            border: 1px solid #000000; /* Рамка толщиной 1 пиксель и черного цвета */
+            border-radius: 5px; /* Закругленные углы рамки */
+            padding: 10px 20px; /* Отступ внутри рамки */
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${person}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+    <br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+    <br/>
+    <label for="address">Enter address: </label>
+    <input type="text" th:field="*{address}" id="address"/>
+    <div style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address error</div>
+    <br/>
+    <label for="gender">Enter gender: </label>
+    <input type="text" th:field="*{gender}" id="gender"/>
+    <div style="color:red" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Address gender</div>
+    <br/>
+
+    <input type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1623221638187-91bd42da2de6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .content p {
+            border: 1px solid black; /* Рамка толщиной 1 пиксель и черного цвета */
+            border-radius: 5px; /* Закругленные углы рамки */
+            padding: 10px; /* Отступ внутри рамки */
+            background-color: white;
+        }
+
+        .content a {
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #000000; /* Рамка толщиной 1 пиксель и черного цвета */
+            border-radius: 5px; /* Закругленные углы рамки */
+            margin: 5px; /* Расстояние между ссылками */
+            background-color: white; /* Белый фон внутри рамки */
+        }
+    </style>
+
+    <style>
+        hr {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <p th:text="${'Name: ' + person.getName() + ', ' + person.getAge()}">VALUE</p>
+    <p th:text="${'Email: ' + person.getEmail()}">VALUE</p>
+    <p th:text="${'Age: ' + person.getAge()}">VALUE</p>
+    <p th:text="${'Address: ' + person.getAddress()}">VALUE</p>
+    <p th:text="${'Gender: ' + person.getGender()}">VALUE</p>
+
+    <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
+
+    <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+        <input type="submit" value="Delete"/>
+    </form>
+</div>
+</body>
+</html>
